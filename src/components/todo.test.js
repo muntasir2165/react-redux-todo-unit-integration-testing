@@ -20,4 +20,10 @@ describe('<Todo /> component Unit Tests', () => {
     expect(component).toHaveLength(1);
     expect(component.find('li')).toHaveLength(1);
   });
+
+  it('should render props correctly', () => {
+    const component = shallow(<Todo {...props} />);
+    // console.log(component.props());
+    expect(component.props().children).toEqual('buy milk');
+  });
 });
