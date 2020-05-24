@@ -40,3 +40,20 @@ describe('<Todo /> component Unit Tests', () => {
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('<Todo /> Styling behaviour', () => {
+  const mockFn = jest.fn();
+  it('should not have linethrough style when todo is incomplete', () => {
+    const component = shallow(
+      <Todo onClick={mockFn} completed={false} text='go shopping' />
+    );
+    expect(component.props().style).toEqual({ textDecoration: 'none' });
+  });
+
+  it('should have linethrough style when todo is complete', () => {
+    const component = shallow(
+      <Todo onClick={mockFn} completed={true} text='go shopping' />
+    );
+    expect(component.props().style).toEqual({ textDecoration: 'line-through' });
+  });
+});
