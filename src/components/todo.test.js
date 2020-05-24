@@ -26,4 +26,16 @@ describe('<Todo /> component Unit Tests', () => {
     // console.log(component.props());
     expect(component.props().children).toEqual('buy milk');
   });
+
+  it('should set props correctly', () => {
+    const component = shallow(<Todo {...props} />);
+    component.setProps({ text: 'hello' });
+    expect(component.props().children).toEqual('hello');
+  });
+
+  it('should call onClick handler when Todo component is clicked', () => {
+    const component = shallow(<Todo {...props} />);
+    component.simulate('click');
+    expect(mockFn).toHaveBeenCalledTimes(1);
+  });
 });
