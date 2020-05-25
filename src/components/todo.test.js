@@ -41,19 +41,41 @@ describe('<Todo /> component Unit Tests', () => {
   });
 });
 
+// See lines 63-71 for explanation on the commented out code on lines 46-50
+
+// fdescribe('<Todo /> Styling behaviour', () => {
+// describe.only('<Todo /> Styling behaviour', () => {
+
+// xdescribe('<Todo /> Styling behaviour', () => {
+// describe.skip('<Todo /> Styling behaviour', () => {
+
 describe('<Todo /> Styling behaviour', () => {
   const mockFn = jest.fn();
   it('should not have linethrough style when todo is incomplete', () => {
     const component = shallow(
       <Todo onClick={mockFn} completed={false} text='go shopping' />
     );
-    expect(component.props().style).toEqual({ textDecoration: 'none' });
+    expect(component.props().style).toEqual({
+      textDecoration: 'none',
+    });
   });
+
+  // f => focus on this test only / run only the test in this file that is marked with 'f'
+  // fit('should have linethrough style when todo is complete', () => {
+  // the following it.only(...) is identical to the fit(...) syntax with regards to the functionality
+  // it.only('should have linethrough style when todo is complete', () => {
+
+  // x => skip this test / run all the tests in this file except for the one marked with 'x'
+  // xit('should have linethrough style when todo is complete', () => {
+  // the following it.skip(...) is identical to the xit(...) syntax with regards to the functionality
+  // it.skip('should have linethrough style when todo is complete', () => {
 
   it('should have linethrough style when todo is complete', () => {
     const component = shallow(
       <Todo onClick={mockFn} completed={true} text='go shopping' />
     );
-    expect(component.props().style).toEqual({ textDecoration: 'line-through' });
+    expect(component.props().style).toEqual({
+      textDecoration: 'line-through',
+    });
   });
 });
