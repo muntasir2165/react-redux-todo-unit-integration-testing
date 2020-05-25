@@ -15,4 +15,14 @@ describe('Redux Store Integration Tests', () => {
     expect(todo.text).toEqual('buy milk');
     expect(todo.completed).toEqual(false);
   });
+
+  it('should toggle 1 Todo', () => {
+    store.dispatch(addTodo('go shopping'));
+    // console.log('before toggle', store.getState());
+    store.dispatch(toggleTodo(1));
+    // console.log('after toggle', store.getState());
+    const todo = store.getState().todos.find((x) => x.text === 'go shopping');
+        expect(todo.text).toEqual('go shopping');
+        expect(todo.completed).toEqual(true);
+  });
 });
